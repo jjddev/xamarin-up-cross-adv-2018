@@ -50,7 +50,7 @@
                 Grid.Column="0"
                 Grid.ColumnSpan="5"
                 Aspect="AspectFill"
-                />
+                Source="{Binding PosterPath}" />
                             <!-- icons -->
                             <BoxView
                 Grid.Row="2"

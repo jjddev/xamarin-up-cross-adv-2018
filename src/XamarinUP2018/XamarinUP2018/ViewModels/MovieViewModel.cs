@@ -45,7 +45,7 @@ namespace XamarinUP2018.ViewModels
                 
                 foreach (var item in movies.Results)
                 {
-                    
+                    item.PosterPath = "https://image.tmdb.org/t/p/w154" + item.PosterPath;
                     Items.Add(item);
                 }
 
