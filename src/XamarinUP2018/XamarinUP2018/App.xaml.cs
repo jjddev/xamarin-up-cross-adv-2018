@@ -26,6 +26,9 @@ namespace XamarinUP2018
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
             containerRegistry.Register<IFeedService, FeedService>();
+            containerRegistry.Register<IMovieService, MovieService>();
+
+            containerRegistry.RegisterForNavigation<MovieList, MovieViewModel>(nameof(MovieList));
 
             containerRegistry.RegisterForNavigation<NavigationPage>(nameof(NavigationPage));
             containerRegistry.RegisterForNavigation<HomePage, HomeViewModel>(nameof(HomePage));
