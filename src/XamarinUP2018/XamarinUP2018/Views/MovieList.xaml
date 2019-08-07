@@ -1,14 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:XamarinUP2018.ViewModels"
+             
              x:Class="XamarinUP2018.Views.MovieList">
     <ContentPage.Content>
-        <ListView
+        <ListView SelectedItem="{Binding GoDetail,Source=MovieViewModel}"
            HasUnevenRows="True"
            SeparatorColor="Transparent"
            SeparatorVisibility="None"
            IsRefreshing="{Binding IsBusy}"
            ItemsSource="{Binding Items}"
+           
            CachingStrategy="RecycleElement">
             <ListView.ItemTemplate>
                 <DataTemplate>
@@ -25,76 +28,20 @@
                                 <ColumnDefinition Width="28" />
                                 <ColumnDefinition Width="28" />
                                 <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="28" />
                             </Grid.ColumnDefinitions>
                             <!-- header -->
-                            <BoxView
-                Grid.Row="0"
-                Grid.Column="0"
-                VerticalOptions="Fill"
-                HorizontalOptions="Fill"
-                BackgroundColor="Red" />
-                            <Label  TextColor="#000"  
-                Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" Text="{Binding Title}" FontAttributes="Bold" />
-                            <BoxView
-                Grid.Row="0"
-                Grid.Column="4"
-                HeightRequest="28"
-                WidthRequest="28"
-                VerticalOptions="Fill"
-                HorizontalOptions="Fill"
-                BackgroundColor="Maroon" />
-                            <!-- image -->
-                            <Image
-                Grid.Row="1"
-                Grid.Column="0"
-                Grid.ColumnSpan="5"
-                Aspect="AspectFill"
-                Source="{Binding PosterPath}" />
-                            <!-- icons -->
-                            <BoxView
-                Grid.Row="2"
-                Grid.Column="0"
-                HeightRequest="28"
-                WidthRequest="28"
-                VerticalOptions="Fill"
-                HorizontalOptions="Fill"
-                BackgroundColor="Red" />
-                            <BoxView
-                Grid.Row="2"
-                Grid.Column="1"
-                HeightRequest="28"
-                WidthRequest="28"
-                VerticalOptions="Fill"
-                HorizontalOptions="Fill"
-                BackgroundColor="Yellow" />
-                            <BoxView
-                Grid.Row="2"
-                Grid.Column="2"
-                HeightRequest="28"
-                WidthRequest="28"
-                VerticalOptions="Fill"
-                HorizontalOptions="Fill"
-                BackgroundColor="Chartreuse" />
-                            <BoxView
-                Grid.Row="2"
-                Grid.Column="4"
-                HeightRequest="28"
-                WidthRequest="28"
-                VerticalOptions="Fill"
-                HorizontalOptions="Fill"
-                BackgroundColor="Maroon" />
-                            <!-- text -->
-                            <Label
-                Grid.Row="3"
-                Grid.Column="0"
-                Grid.ColumnSpan="4"
-                LineBreakMode="WordWrap"
-                TextColor="#999"
-                Margin="16, 8"
-                 />
+
+                            <Label  TextColor="#000" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" Text="{Binding Title}" LineBreakMode="TailTruncation"  FontAttributes="Bold" />
+
+                            <Image Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="5" Aspect="AspectFill" Source="{Binding PosterPath}" />
+
+                            <Button Text="DETALHES" Command="{Binding GoDetail} WidthRequest="90" HeightRequest="68" />
                         </Grid>
+
                     </ViewCell>
+ 
+                       
+
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>

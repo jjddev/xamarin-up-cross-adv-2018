@@ -10,16 +10,11 @@ using Xamarin.Forms.Xaml;
 namespace XamarinUP2018.Views
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class MovieList : ContentPage
+	public partial class Detail : ContentPage
 	{
-		public MovieList ()
+		public Detail ()
 		{
 			InitializeComponent ();
 		}
-
-        private void Button_Clicked(object sender, EventArgs e)
-        {
-
-        }
-    }
+	}
 }

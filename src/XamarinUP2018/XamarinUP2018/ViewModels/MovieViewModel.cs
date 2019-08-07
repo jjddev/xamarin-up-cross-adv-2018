@@ -6,19 +6,37 @@ using System.Threading.Tasks;
 using Prism.Navigation;
 using XamarinUP2018.Models;
 using XamarinUP2018.Services;
+using System.Windows.Input;
+using XamarinUP2018.Views;
+using Prism.Commands;
 
 namespace XamarinUP2018.ViewModels
 {
     public sealed class MovieViewModel : ViewModelBase
     {
         private readonly MovieService movieService;
+        public ICommand GoDetail { get; set; }
 
-        public MovieViewModel(INavigationService navigationService
-            , MovieService movieService)
-            : base(navigationService)
+        
+
+        public MovieViewModel(INavigationService navigationService, MovieService movieService): base(navigationService)
         {
+            GoDetail = new DelegateCommand(async () => await ExecuteGoDetail());
             this.movieService = movieService;
         }
+
+        private Task ExecuteGoDetail()
+        {
+            Console.WriteLine("aaaaaaaaaaaaaaaaaa");
+            return NavigationService.NavigateAsync(nameof(Detail));
+        }
+
+        /*
+        private Task GetExecuteGoDetail()
+        {
+            return NavigationService.NavigateAsync(nameof(Detail));
+        }
+        */
 
         private ObservableCollection<XamarinUP2018.Services.Result> items = new ObservableCollection<XamarinUP2018.Services.Result>();
 

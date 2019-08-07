@@ -18,5 +18,6 @@ namespace XamarinUP2018.ViewModels
 
         private Task ExecuteGoHome()
             => NavigationService.NavigateAsync($"{nameof(HomePage)}?selectedTab={nameof(MovieList)}");
+            //=>  NavigationService.NavigateAsync(nameof(Detail));
     }
 }
