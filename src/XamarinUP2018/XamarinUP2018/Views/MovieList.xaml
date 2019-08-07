@@ -1,11 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:viewmodels="clr-namespace:XamarinUP2018.ViewModels"
-             
+             xmlns:b="clr-namespace:Prism.Behaviors;assembly=Prism.Forms"
+             xmlns:c="clr-namespace:XamarinUP2018.Commands"
              x:Class="XamarinUP2018.Views.MovieList">
+    
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <c:ItemTappedEventArgsConverter x:Key="itemTappedEventArgsConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
     <ContentPage.Content>
-        <ListView SelectedItem="{Binding GoDetail,Source=MovieViewModel}"
+        <ListView
            HasUnevenRows="True"
            SeparatorColor="Transparent"
            SeparatorVisibility="None"
@@ -13,6 +20,14 @@
            ItemsSource="{Binding Items}"
            
            CachingStrategy="RecycleElement">
+
+            <ListView.Behaviors>
+                <b:EventToCommandBehavior 
+                        EventName="ItemTapped" 
+                        Command="{Binding GoDetail}"                  
+                        EventArgsParameterPath="Item" />
+            </ListView.Behaviors>
+
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
@@ -32,16 +47,11 @@
                             <!-- header -->
 
                             <Label  TextColor="#000" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" Text="{Binding Title}" LineBreakMode="TailTruncation"  FontAttributes="Bold" />
-
                             <Image Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="5" Aspect="AspectFill" Source="{Binding PosterPath}" />
-
-                            <Button Text="DETALHES" Command="{Binding GoDetail} WidthRequest="90" HeightRequest="68" />
                         </Grid>
-
                     </ViewCell>
  
                        
-
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>

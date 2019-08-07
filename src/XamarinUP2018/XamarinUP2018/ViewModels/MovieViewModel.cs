@@ -27,7 +27,7 @@ namespace XamarinUP2018.ViewModels
 
         private Task ExecuteGoDetail()
         {
-            Console.WriteLine("aaaaaaaaaaaaaaaaaa");
+            Console.WriteLine("Navega");
             return NavigationService.NavigateAsync(nameof(Detail));
         }
 
