@@ -21,14 +21,18 @@ namespace XamarinUP2018.ViewModels
 
         public MovieViewModel(INavigationService navigationService, MovieService movieService): base(navigationService)
         {
-            GoDetail = new DelegateCommand(async () => await ExecuteGoDetail());
+            GoDetail = new DelegateCommand<Result>(async (movie) => await ExecuteGoDetail(movie));
+            
             this.movieService = movieService;
         }
 
-        private Task ExecuteGoDetail()
+        private Task ExecuteGoDetail(Result movie)
         {
-            Console.WriteLine("Navega");
-            return NavigationService.NavigateAsync(nameof(Detail));
+            var param = new NavigationParameters();
+            param.Add("movie", movie);
+            
+            param.Add("oi", movie.Title);
+            return NavigationService.NavigateAsync($"{nameof(Detail)}", param);
         }
 
         /*

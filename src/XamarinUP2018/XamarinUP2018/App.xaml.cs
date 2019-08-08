@@ -29,7 +29,7 @@ namespace XamarinUP2018
             containerRegistry.Register<IMovieService, MovieService>();
 
             containerRegistry.RegisterForNavigation<MovieList, MovieViewModel>(nameof(MovieList));
-            containerRegistry.RegisterForNavigation<Detail>(nameof(Detail));
+            containerRegistry.RegisterForNavigation<Detail, DetailViewModel>(nameof(Detail));
             
             containerRegistry.RegisterForNavigation<NavigationPage>(nameof(NavigationPage));
             containerRegistry.RegisterForNavigation<HomePage, HomeViewModel>(nameof(HomePage));
