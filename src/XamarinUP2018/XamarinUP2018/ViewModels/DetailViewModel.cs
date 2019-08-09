@@ -29,6 +29,7 @@ namespace XamarinUP2018.ViewModels
         private Task ExecuteGoDetail(Result movie)
         {
             var param = new NavigationParameters();
+            
             param.Add("movie", movie);
             return NavigationService.NavigateAsync($"{nameof(Detail)}", param);
         }
@@ -43,7 +44,9 @@ namespace XamarinUP2018.ViewModels
 
         public override async void OnNavigatingTo(INavigationParameters parameters)
         {
-            base.OnNavigatingTo(parameters);
+            movie = (Result)parameters["movie"];
+            //movie.PosterPath = "https://image.tmdb.org/t/p/w154" + movie.PosterPath;
+           // await LoadIsFavorited();
         }
 
     }

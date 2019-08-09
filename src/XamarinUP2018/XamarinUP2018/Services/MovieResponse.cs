@@ -76,6 +76,15 @@ namespace XamarinUP2018.Services
 
         [JsonProperty("release_date", NullValueHandling = NullValueHandling.Ignore)]
         public DateTimeOffset? ReleaseDate { get; set; }
+
+        [JsonIgnore]
+        public string dateFormated
+        {
+            get
+            {
+                return $"{ReleaseDate:dd/MM/yyyy}";
+            }
+        }
     }
 
     public enum OriginalLanguage { En, Ja };

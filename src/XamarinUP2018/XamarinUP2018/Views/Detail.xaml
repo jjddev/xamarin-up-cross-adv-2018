@@ -6,15 +6,21 @@
         <Label Text="Detalhes" TextColor="White"/>
     </NavigationPage.TitleView>
     <ContentPage.Content>
+        <ScrollView  VerticalOptions="StartAndExpand" Orientation="Vertical">
         <StackLayout>
-            <Image Source="{Binding PosterPath}" />
+                <Image Source="{Binding movie.PosterPath}" Aspect="AspectFit"/>
+            <Label Text="Título" />
+            <Label Text="{Binding movie.Title}" LineBreakMode="TailTruncation"/>
 
-            <Label Text="{Binding Title}" FontSize="Large" FontAttributes="Bold" HorizontalOptions="Center"/>
-            <Label Text="{Binding movie.Title}" FontAttributes="Bold" />
-            <Label Text="{Binding Movie.Title}" FontAttributes="Bold" />
-            <Label Text="{Binding oi}"/>
-            <Label Text="TESTE"/>
+            <Label Text="{Binding movie.VoteAverage, StringFormat='Média de votos: {0:0.##}'}" />
+            <Label Text="{Binding movie.dateFormated, StringFormat='Lançamento:  {0}'}" />
+            
+            <Label Text="Sinopse" />
+            <Label Text="{Binding movie.Overview}"/>
+            
+            <Image Source="{Binding movie.PosterPath}" Aspect="AspectFit"/>
             <Button Text="FAVORITAR" WidthRequest="200" />
         </StackLayout>
+        </ScrollView>    
     </ContentPage.Content>
 </ContentPage>
