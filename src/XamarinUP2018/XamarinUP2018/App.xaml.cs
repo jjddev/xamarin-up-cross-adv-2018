@@ -19,8 +19,9 @@ namespace XamarinUP2018
         protected override async void OnInitialized()
         {
             InitializeComponent();
-            
-            await NavigationService.NavigateAsync($"{nameof(NavigationPage)}/{nameof(MovieList)}");
+
+            await NavigationService.NavigateAsync($"{nameof(NavigationPage)}");
+            await NavigationService.NavigateAsync($"{nameof(HomePage)}?selectedTab={nameof(MovieList)}");
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
@@ -28,12 +29,24 @@ namespace XamarinUP2018
             
             containerRegistry.Register<IMovieService, MovieService>();
 
+            containerRegistry.RegisterForNavigation<NavigationPage>(nameof(NavigationPage));
+            containerRegistry.RegisterForNavigation<HomePage, HomeViewModel>(nameof(HomePage));
+            
+            containerRegistry.RegisterForNavigation<MovieList, MovieViewModel>(nameof(MovieList));
+            containerRegistry.RegisterForNavigation<Detail, DetailViewModel>(nameof(Detail));
+            containerRegistry.RegisterForNavigation<HistoryPage, HistoryViewModel>(nameof(HistoryPage));
+
+
+
+            /*
             containerRegistry.RegisterForNavigation<MovieList, MovieViewModel>(nameof(MovieList));
             containerRegistry.RegisterForNavigation<Detail, DetailViewModel>(nameof(Detail));
             
             containerRegistry.RegisterForNavigation<NavigationPage>(nameof(NavigationPage));
+            containerRegistry.RegisterForNavigation<HomePage, MovieViewModel>(nameof(MovieList));
             
             containerRegistry.RegisterForNavigation<HistoryPage, HistoryViewModel>(nameof(HistoryPage));
+            */
         }
         
         protected override void OnStart()

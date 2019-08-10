@@ -6,9 +6,11 @@
              mc:Ignorable="d"
              xmlns:views="clr-namespace:XamarinUP2018.Views;assembly=XamarinUP2018"
              x:Class="XamarinUP2018.Views.HomePage"
-             NavigationPage.HasNavigationBar="False"
+             NavigationPage.HasNavigationBar="true"
              xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
-             android:TabbedPage.ToolbarPlacement="Bottom">
+             Title="Filmes"
+             android:TabbedPage.ToolbarPlacement="Bottom"
+            >
     <TabbedPage.Children>
         <views:HistoryPage Title="Favoritos" Icon="baseline_history_black_48.png" />
         <views:MovieList Title="Top Filmes" IconImageSource="baseline_rss_feed_black_48.png" />

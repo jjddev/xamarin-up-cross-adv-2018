@@ -127,6 +127,8 @@ namespace XamarinUP2018.Services
                     return OriginalLanguage.En;
                 case "ja":
                     return OriginalLanguage.Ja;
+                default:
+                    return OriginalLanguage.En;
             }
             throw new Exception("Cannot unmarshal type OriginalLanguage");
         }

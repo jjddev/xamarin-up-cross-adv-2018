@@ -15,7 +15,7 @@ namespace XamarinUP2018.ViewModels
     public sealed class MovieViewModel : ViewModelBase
     {
         private readonly MovieService movieService;
-        public ICommand GoDetail { get; set; }
+        public ICommand GoDetail { get; }
 
         
 

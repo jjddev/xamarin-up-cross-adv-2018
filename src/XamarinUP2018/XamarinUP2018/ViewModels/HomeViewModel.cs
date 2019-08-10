@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using XamarinUP2018.Views;
 
 namespace XamarinUP2018.ViewModels
 {
@@ -18,8 +19,7 @@ namespace XamarinUP2018.ViewModels
             , IPageDialogService pageDialogService) : base(navigationService)
         {
             this.pageDialogService = pageDialogService;
-            ShowAlert = new DelegateCommand(async () => await ExecuteShowAllert())
-                .ObservesCanExecute(() => IsNotBusy);
+            ShowAlert = new DelegateCommand(async () => await ExecuteShowAllert()).ObservesCanExecute(() => IsNotBusy);
         }
 
         private string text;
@@ -35,8 +35,7 @@ namespace XamarinUP2018.ViewModels
         {
             await ExecuteBusyAction(async () =>
             {
-                await Task.Delay(5000);
-                await pageDialogService.DisplayAlertAsync("Hello", "The Message", "Ok");
+                await NavigationService.NavigateAsync($"{nameof(HomePage)}?selectedTab={nameof(MovieList)}");
             });
         }
     }
