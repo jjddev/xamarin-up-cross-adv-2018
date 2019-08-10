@@ -15,15 +15,25 @@ namespace XamarinUP2018.ViewModels
     public sealed class DetailViewModel : ViewModelBase
     {
         private readonly MovieService movieService;
+        private readonly FavoriteService favoriteService;
         public ICommand GoDetail { get; }
+        public ICommand Favorited { get; }
 
 
 
         public DetailViewModel(INavigationService navigationService, MovieService movieService) : base(navigationService)
         {
             GoDetail = new DelegateCommand<Result>(async (movie) => await ExecuteGoDetail(movie));
-
+            Favorited = new DelegateCommand<Result>(ExecuteFavorite);
             this.movieService = movieService;
+            //this.favoriteService = fs;
+            //this.favoriteService = favoriteService;
+        }
+
+        private void ExecuteFavorite(Result movie)
+        {
+            Console.WriteLine("favoritado");
+            
         }
 
         private Task ExecuteGoDetail(Result movie)
