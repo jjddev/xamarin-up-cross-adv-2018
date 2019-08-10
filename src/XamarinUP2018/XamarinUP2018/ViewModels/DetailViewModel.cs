@@ -45,8 +45,6 @@ namespace XamarinUP2018.ViewModels
         public override async void OnNavigatingTo(INavigationParameters parameters)
         {
             movie = (Result)parameters["movie"];
-            //movie.PosterPath = "https://image.tmdb.org/t/p/w154" + movie.PosterPath;
-           // await LoadIsFavorited();
         }
 
     }

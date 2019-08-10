@@ -30,17 +30,8 @@ namespace XamarinUP2018.ViewModels
         {
             var param = new NavigationParameters();
             param.Add("movie", movie);
-            
-            param.Add("oi", movie.Title);
             return NavigationService.NavigateAsync($"{nameof(Detail)}", param);
         }
-
-        /*
-        private Task GetExecuteGoDetail()
-        {
-            return NavigationService.NavigateAsync(nameof(Detail));
-        }
-        */
 
         private ObservableCollection<XamarinUP2018.Services.Result> items = new ObservableCollection<XamarinUP2018.Services.Result>();
 

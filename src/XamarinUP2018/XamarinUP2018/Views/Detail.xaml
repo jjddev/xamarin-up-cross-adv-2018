@@ -16,8 +16,8 @@
             
             <Label Text="Sinopse" />
             <Label Text="{Binding movie.Overview}"/>
-           
-            <Button Text="FAVORITAR" WidthRequest="200" />
+
+                <Button Text="FAVORITAR" WidthRequest="200" Command="{Binding GoDetail}" />
         </StackLayout>
         </ScrollView>    
     </ContentPage.Content>

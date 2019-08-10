@@ -28,6 +28,7 @@ namespace XamarinUP2018
 
             containerRegistry.Register<ILocalDataBaseRepository, LocalDataBaseRepository>();
             containerRegistry.Register<IMovieService, MovieService>();
+            containerRegistry.Register<IFavoriteService, FavoriteService>();
 
             containerRegistry.RegisterForNavigation<NavigationPage>(nameof(NavigationPage));
             containerRegistry.RegisterForNavigation<HomePage, HomeViewModel>(nameof(HomePage));
@@ -35,6 +36,7 @@ namespace XamarinUP2018
             containerRegistry.RegisterForNavigation<MovieList, MovieViewModel>(nameof(MovieList));
             containerRegistry.RegisterForNavigation<Detail, DetailViewModel>(nameof(Detail));
             containerRegistry.RegisterForNavigation<HistoryPage, HistoryViewModel>(nameof(HistoryPage));
+            
 
         }
         
