@@ -4,6 +4,7 @@ using Prism.Ioc;
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using XamarinUP2018.Repositories;
 using XamarinUP2018.Services;
 using XamarinUP2018.ViewModels;
 using XamarinUP2018.Views;
@@ -19,14 +20,13 @@ namespace XamarinUP2018
         protected override async void OnInitialized()
         {
             InitializeComponent();
-
-            await NavigationService.NavigateAsync($"{nameof(NavigationPage)}");
-            await NavigationService.NavigateAsync($"{nameof(HomePage)}?selectedTab={nameof(MovieList)}");
+            await NavigationService.NavigateAsync($"{nameof(NavigationPage)}/{nameof(HomePage)}?selectedTab={nameof(MovieList)}");
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
-            
+
+            containerRegistry.Register<ILocalDataBaseRepository, LocalDataBaseRepository>();
             containerRegistry.Register<IMovieService, MovieService>();
 
             containerRegistry.RegisterForNavigation<NavigationPage>(nameof(NavigationPage));
@@ -36,17 +36,6 @@ namespace XamarinUP2018
             containerRegistry.RegisterForNavigation<Detail, DetailViewModel>(nameof(Detail));
             containerRegistry.RegisterForNavigation<HistoryPage, HistoryViewModel>(nameof(HistoryPage));
 
-
-
-            /*
-            containerRegistry.RegisterForNavigation<MovieList, MovieViewModel>(nameof(MovieList));
-            containerRegistry.RegisterForNavigation<Detail, DetailViewModel>(nameof(Detail));
-            
-            containerRegistry.RegisterForNavigation<NavigationPage>(nameof(NavigationPage));
-            containerRegistry.RegisterForNavigation<HomePage, MovieViewModel>(nameof(MovieList));
-            
-            containerRegistry.RegisterForNavigation<HistoryPage, HistoryViewModel>(nameof(HistoryPage));
-            */
         }
         
         protected override void OnStart()
